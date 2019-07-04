@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="">
+  <meta name="author" content="">
+
+  <title>Creative - Start Bootstrap Theme</title>
+
+  <!-- Font Awesome Icons -->
+  <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css?family=Merriweather+Sans:400,700" rel="stylesheet">
+  <link href='https://fonts.googleapis.com/css?family=Merriweather:400,300,300italic,400italic,700,700italic' rel='stylesheet' type='text/css'>
+
+  <!-- Plugin CSS -->
+  <link href="vendor/magnific-popup/magnific-popup.css" rel="stylesheet">
+
+  <!-- Theme CSS - Includes Bootstrap -->
+  <link href="css/creative.css" rel="stylesheet">
+
+</head>
+
+<body id="page-top">
+
+  <!-- Navigation -->
+  <nav class="navbar navbar-expand-lg navbar-light fixed-top py-3" id="mainNav">
+    <div class="container">
+      <a class="navbar-brand js-scroll-trigger" href="#page-top">The Mikvah of New Rochelle</a>
+      <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarResponsive">
+        <ul class="navbar-nav ml-auto my-2 my-lg-0">
+          <li class="nav-item">
+            <a class="nav-link js-scroll-trigger" href="#about">About</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link js-scroll-trigger" href="#services">Hours</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link js-scroll-trigger" href="#portfolio">Photos</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link js-scroll-trigger" href="#kallah">The Kallah Program</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link js-scroll-trigger" href="#fees">Fees</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link js-scroll-trigger" href="#contact">Contact</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Masthead -->
+  <header class="masthead">
+    <div class="container h-100">
+      <div class="row h-100 align-items-center justify-content-center text-center">
+        <div class="col-lg-10 align-self-end">
+          <h1 class="text-white font-weight-bold">The Mikvah of New Rochelle</h1>
+          <hr class="divider my-4">
+        </div>
+        <div class="col-lg-8 align-self-baseline">
+          <p class="text-white font-weight-light mb-5">Beautifully designed Mikvah facility in the heart of New Rochelle</p>
+          <!-- <a class="btn btn-primary btn-xl js-scroll-trigger" href="#about">Find Out More</a> -->
+        </div>
+    </div>
+  </header>
+
+  <!-- About Section -->
+  <section class="page-section bg-primary" id="about">
+    <div class="container">
+      <div class="row justify-content-center">
+        <div class="col-lg-8 text-center">
+          <h2 class="text-white mt-0">About Us</h2>
+          <hr class="divider light my-4">
+          <p class="text-white-50 mb-4">The Mikvah of New Rochelle was established on December 7, 2008 to meet the needs of our growing community.
+            <br/>
+            <br/>
+            In order to enhance the Mikvah experience, our facility offers: 2 Mikvaot, 7 prep rooms, 2 jacuzzi baths, handicapped accessibility, a parking lot, security cameras and a buzzer system at the entrance, radiant floor heating, plush linens and preparation supplies.
+            <br/>
+            <br/>
+            Throughout the year we operate as a women’s mikvah. Men’s mikvah hours are provided Erev Rosh Hashanah and Erev Yom Kippur. 
+            <br/>
+            The Keilim mikvah is located in the YINR garage at 1149 North Avenue. For hours and access information, please contact the YINR office at 914-636-2215.
+          </p>
+          <a class="btn btn-light btn-xl js-scroll-trigger" href="#services">See hours</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Services Section -->
+  <section class="page-section" id="services">
+    <div class="container">
+      <h2 class="text-center mt-0" id="service">Hours of Service</h2>
+      <hr class="divider dark my-4">
+      <div class="row justify-content-center">
+        <div class="col-lg-3 col-md-6 text-center">
+          <div class="mt-5">
+            <i class="fas fa-4x fa-door-open text-primary mb-4"></i>
+            <h3 class="h4 mb-2">Opens</h3>
+            <p class="text-muted mb-0" id="open"></p>
+          </div>
+        </div>
+        <div class="col-lg-3 col-md-6 text-center">
+          <div class="mt-5">
+            <i class="fas fa-4x fa-water text-primary mb-4"></i>
+            <h3 class="h4 mb-2">Earliest Tevila</h3>
+            <p class="text-muted mb-0" id="tevila"></p>
+          </div>
+        </div>
+      </div>
+        <div class="row justify-content-center">
+        <div class="col-lg-3 col-md-6 text-center">
+          <div class="mt-5">
+            <i class="fas fa-4x fa-bath text-primary mb-4"></i>
+            <h3 class="h4 mb-2">Last Bath</h3>
+            <p class="text-muted mb-0" id="last bath"></p>
+          </div>
+        </div>
+        <div class="col-lg-3 col-md-6 text-center">
+          <div class="mt-5">
+            <i class="fas fa-4x fa-shower text-primary mb-4"></i>
+            <h3 class="h4 mb-2">Last Shower</h3>
+            <p class="text-muted mb-0" id="last shower"></p>
+          </div>
+        </div>
+        <div class="col-lg-3 col-md-6 text-center">
+          <div class="mt-5">
+            <i class="fas fa-4x fa-door-closed text-primary mb-4"></i>
+            <h3 class="h4 mb-2">Closes</h3>
+            <p class="text-muted mb-0" id="closes"></p>
+          </div>
+        </div>
+      </div>
+    </div>
+      <hr class="divider light my-4">
+      <div class= "row justify-content-center">
+      <div class="col-lg-8 text-center">
+        <p class="mb-4">Friday and Yom Tov nights are by appointment only. Please <a href="#contact">call<a/> by Thursday evening or in advance of Yom Tov to confirm. 
+            <br/>
+            <br/>
+            If you are unexpectedly delayed, we will do our best to accommodate you.  Please <a href="#contact">call<a/> the mikvah 15 minutes before closing in order to request that the mikvah attendant waits for you.
+            <br/>
+            <br/>
+            To schedule a Kallah appointment, please <a href="#contact">call<a/> Mrs. Debbie Wilk at the mikvah.
+          </p>
+      <div/>
+      <div/>
+    </div>
+  </section>
+
+  <!-- Portfolio Section -->
+  <section id="portfolio">
+    <div class="container-fluid p-0">
+      <div class="row no-gutters">
+        <div class="col-lg-4 col-sm-6">
+          <a class="portfolio-box" href="img/portfolio/fullsize/1.jpg">
+            <img class="img-fluid" src="img/portfolio/thumbnails/1.jpg" alt="">
+            <div class="portfolio-box-caption">
+              <div class="project-category text-white-50">
+                Mikvah of New Rochelle
+              </div>
+              <div class="project-name">
+                Building Exterior
+              </div>
+            </div>
+          </a>
+        </div>
+        <div class="col-lg-4 col-sm-6">
+          <a class="portfolio-box" href="img/portfolio/fullsize/2.jpg">
+            <img class="img-fluid" src="img/portfolio/thumbnails/2.jpg" alt="">
+            <div class="portfolio-box-caption">
+              <div class="project-category text-white-50">
+                Mikvah of New Rochelle
+              </div>
+              <div class="project-name">
+                1 of 2 Mikvaot
+              </div>
+            </div>
+          </a>
+        </div>
+        <div class="col-lg-4 col-sm-6">
+          <a class="portfolio-box" href="img/portfolio/fullsize/3.jpg">
+            <img class="img-fluid" src="img/portfolio/thumbnails/3.jpg" alt="">
+            <div class="portfolio-box-caption">
+              <div class="project-category text-white-50">
+                Mikvah of New Rochelle
+              </div>
+              <div class="project-name">
+                Kallah Prep Room
+              </div>
+            </div>
+          </a>
+        </div>
+        <div class="col-lg-4 col-sm-6">
+          <a class="portfolio-box" href="img/portfolio/fullsize/4.jpg">
+            <img class="img-fluid" src="img/portfolio/thumbnails/4.jpg" alt="">
+            <div class="portfolio-box-caption">
+              <div class="project-category text-white-50">
+                Mikvah of New Rochelle
+              </div>
+              <div class="project-name">
+                Prep Room
+              </div>
+            </div>
+          </a>
+        </div>
+        <div class="col-lg-4 col-sm-6">
+          <a class="portfolio-box" href="img/portfolio/fullsize/5.jpg">
+            <img class="img-fluid" src="img/portfolio/thumbnails/5.jpg" alt="">
+            <div class="portfolio-box-caption">
+              <div class="project-category text-white-50">
+                Mikvah of New Rochelle
+              </div>
+              <div class="project-name">
+                Handicap Accessible Prep Room
+              </div>
+            </div>
+          </a>
+        </div>
+        <div class="col-lg-4 col-sm-6">
+          <a class="portfolio-box" href="img/portfolio/fullsize/6.jpg">
+            <img class="img-fluid" src="img/portfolio/thumbnails/6.jpg" alt="">
+            <div class="portfolio-box-caption p-3">
+              <div class="project-category text-white-50">
+                Mikvah of New Rochelle
+              </div>
+              <div class="project-name">
+                Reception and Waiting Room
+              </div>
+            </div>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Kallah Program Section -->
+  <section class="page-section bg-primary" id="kallah">
+    <div class="container">
+      <div class="row justify-content-center">
+        <div class="col-lg-8 text-center">
+          <h2 class="text-white mt-0">The Kallah Program</h2>
+          <hr class="divider light my-4">
+          <p class="text-white-50 mb-4">The Mikvah of New Rochelle has a special program for all new Kallahs.
+            <br/>
+            <br/>
+            Our brides are put in a special room to prep and given a care package to leave with. 
+            <br/>
+            <br/>
+            <img class="img-fluid" src="img/portfolio/thumbnails/bride.jpg" alt="">
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Call to Action Section -->
+  <section class="page-section bg-dark text-white" id="fees">
+    <div class="container text-center">
+      <h2 class="mb-4">Fees and Membership</h2>
+           <hr class="divider light my-4">
+      <div class= "row justify-content-center">
+      <div class="col-lg-8 text-center">
+        <p class="mb-4">Nightly Usage Fee: $25 
+            <br/>
+            To compensate the mikvah attendants for their time, there will be an additional fee of $25 for arrival after posted hours.
+            <br/>
+            <br/>
+            Annual membership fee: $275
+          </p>
+      <div/>
+      <div/>
+      <a class="btn btn-light btn-xl" href="https://docs.google.com/forms/d/e/1FAIpQLSfWR7kB23fVQcduYzR4hS-kyhIhYnDZRpJ_vhz_Zqw5m-EOAQ/viewform">Apply for membership</a>
+    </div>
+  </section>
+
+  <!-- Contact Section -->
+  <section class="page-section" id="contact">
+    <div class="container">
+      <div class="row justify-content-center">
+        <div class="col-lg-8 text-center">
+          <h2 class="mt-0">Contact Us</h2>
+          <hr class="divider my-4">
+          <!-- <p class="text-muted mb-5">Ready to start your next project with us? Give us a call or send us an email and we will get back to you as soon as possible!</p> -->
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-lg-4 ml-auto text-center">
+          <i class="fas fa-home fa-3x mb-3 text-muted"></i>
+          <div>1228 North Ave, New Rochelle, NY 10804</div>
+        </div>
+        <div class="col-lg-4 ml-auto text-center">
+          <i class="fas fa-phone fa-3x mb-3 text-muted"></i>
+          <div>+1 (914) 740-7754</div>
+        </div>
+        <div class="col-lg-4 mr-auto text-center">
+          <i class="fas fa-envelope fa-3x mb-3 text-muted"></i>
+          <!-- Make sure to change the email address in anchor text AND the link below! -->
+          <a class="d-block" href="mailto:contact@yourwebsite.com">mikvahofnewrochelle@gmail.com</a>
+        </div>
+      </div>
+      <hr class="divider light my-4">
+      <div class= "row justify-content-center">
+      <div class="col-lg-8 text-center">
+        <p class="mb-4">
+            The mikvah parking lot is reserved for women’s use only. 
+            <br/>
+            The mikvah is accessible from the left path with an entrance in the rear of the building.
+            <br/>
+            <br/>
+            Mikvah Attendants: Mrs. Deborah Wilk and Mrs. Sondra Spingarn
+            <br/>
+            <br/>
+            For personal questions or halachic guidance about mikvah use, please contact:
+            <br/>
+            Rabbi Reuven Fink: rabbi@yinr.org
+            <br/>
+            Rabbi Chaim Axelrod: put email here
+            <br/>
+            Rebbitzen Yael Axelrod: Put email here
+          </p>
+      <div/>
+      <div/>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="bg-light py-5">
+    <div class="container">
+      <div class="small text-center text-muted">Copyright &copy; 2019 - The Mikvah of New Rochelle</div>
+    </div>
+  </footer>
+
+  <!-- Bootstrap core JavaScript -->
+  <script src="vendor/jquery/jquery.min.js"></script>
+  <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+  <!-- Plugin JavaScript -->
+  <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
+  <script src="vendor/magnific-popup/jquery.magnific-popup.min.js"></script>
+
+  <!-- Custom scripts for this template -->
+  <script src="js/creative.min.js"></script>
+  <script src="js/scripts.js"></script>
+
+</body>
+
+</html>

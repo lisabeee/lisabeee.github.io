@@ -44,7 +44,7 @@ if (today.getDay() == 6) { // check fridays candlelighting because API has diffe
     dayToday--;
 }
 
-request2.open('GET', `https://www.hebcal.com/shabbat/?cfg=json&zip=10804&gy=${today.getYear()}&gm=${today.getMonth()+1}&gd=${dayToday}`, true); 
+request2.open('GET', `https://www.hebcal.com/shabbat/?cfg=json&zip=10804&gy=${today.getFullYear()}&gm=${today.getMonth()+1}&gd=${dayToday}`, true); 
 
 request2.onload = function() {
 

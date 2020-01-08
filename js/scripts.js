@@ -1,5 +1,20 @@
 // display hours of service for specific date
 
+$('.jquery-datepicker').datepicker();
+
+document.getElementById("dp_button").addEventListener("click", function() {
+    console.log("hi");
+
+    var days = document.getElementsByClassName("jquery-datepicker__day");
+    for (i = 0; i < days.length; i++) {
+        days[i].addEventListener("click", function() {
+            console.log("hello");
+        });
+    }
+});
+
+console.log(document.getElementById("dp_input").value);
+
 var today = new Date();
 var today1 = today.toString().split(" ", 4); 
 const months = ["January", "February", "March", "April", "May",

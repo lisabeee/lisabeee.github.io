@@ -25,6 +25,9 @@
   <!-- Theme CSS - Includes Bootstrap -->
   <link href="css/creative.css" rel="stylesheet">
 
+  <!-- Datepicker -->
+  <link rel="stylesheet" href="vendor/datepicker/test/jquery-datepicker.css">
+
 </head>
 
 <body id="page-top">
@@ -157,15 +160,16 @@
       <hr class="divider light my-4">
       <div class= "row justify-content-center">
       <div class="col-lg-8 text-center">
-        <p class="mb-4">Friday and Yom Tov nights are by appointment only. Please <a href="#contact">call<a/> by Thursday evening or in advance of Yom Tov to confirm. 
+        <p class="mb-4">Friday and Yom Tov nights are by appointment only. Please <a href="#contact">call</a> by Thursday evening or in advance of Yom Tov to confirm. 
             <br/>
             <br/>
-            If you are unexpectedly delayed, we will do our best to accommodate you.  Please <a href="#contact">call<a/> the mikvah 15 minutes before closing in order to request that the mikvah attendant waits for you.
+            If you are unexpectedly delayed, we will do our best to accommodate you.  Please <a href="#contact">call</a> the mikvah 15 minutes before closing in order to request that the mikvah attendant waits for you.
             <br/>
             <br/>
-            To schedule a Kallah appointment, please <a href="#contact">call<a/> Mrs. Debbie Wilk at the mikvah.
+            To schedule a Kallah appointment, please <a href="#contact">call</a> Mrs. Debbie Wilk at the mikvah.
           </p>
 
+<<<<<<< HEAD
           <!-- Button trigger modal -->
         <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
           View Additional Dates
@@ -198,6 +202,40 @@
         </div>
       <div/>
       <div/>
+=======
+          <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+            View Additional Dates
+          </button>
+        
+          <!-- Modal -->
+          <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="exampleModalLabel">Additional Dates</h5>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+                <div class="modal-body">
+                  <!-- Add date picker here -->
+                  <div class="jquery-datepicker" id="dp_button">
+                      <input type="text" class="jquery-datepicker__input" id="dp_input">
+                      <h3 class="h4">Opens</h3>
+                      <h3 class="h4">Closes</h3>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        <div>
+                
+      <div>
+      <div>
+>>>>>>> c6e1380b2f54fc2b18c3d1edca3590df2dad65ab
     </div>
   </section>
 
@@ -341,8 +379,11 @@
   <script src="vendor/magnific-popup/jquery.magnific-popup.min.js"></script>
 
   <!-- Custom scripts for this template -->
+  <script src="vendor/datepicker/jquery-datepicker.js"></script>
   <script src="js/creative.min.js"></script>
   <script src="js/scripts.js"></script>
+  <script src="vendor/suncalc/suncalc.js"></script>
+  <script src="vendor/datepicker/jquery-datepicker.js"></script>
 
 </body>
 

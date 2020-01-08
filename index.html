@@ -169,40 +169,7 @@
             To schedule a Kallah appointment, please <a href="#contact">call</a> Mrs. Debbie Wilk at the mikvah.
           </p>
 
-<<<<<<< HEAD
-          <!-- Button trigger modal -->
-        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
-          View Additional Dates
-        </button>
-
-        <!-- Modal -->
-        <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-          <div class="modal-dialog" role="document">
-            <div class="modal-content">
-              <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Additional Dates</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                  <span aria-hidden="true">&times;</span>
-                </button>
-              </div>
-              <div class="modal-body">
-                <!-- Add date picker here -->
-                <div class="input-group date" data-provide="datepicker">
-                <input type="text" class="form-control" id="data-date">
-                <div class="input-group-addon">
-                    <span class="glyphicon glyphicon-th"></span>
-                </div>
-            </div>
-              </div>
-              <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-              </div>
-            </div>
-          </div>
-        </div>
-      <div/>
-      <div/>
-=======
+        <!-- Button trigger modal -->
           <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
             View Additional Dates
           </button>
@@ -219,10 +186,16 @@
                 </div>
                 <div class="modal-body">
                   <!-- Add date picker here -->
-                  <div class="jquery-datepicker" id="dp_button">
+                  <div class="jquery-datepicker" data-format="mmddyy" data-start-date=-"-0d" id="dp_button">
+                    <label>Select a date:</label>
                       <input type="text" class="jquery-datepicker__input" id="dp_input">
-                      <h3 class="h4">Opens</h3>
-                      <h3 class="h4">Closes</h3>
+                        <div class="custom-date-times">
+                          <h6 class="modal-time">Opens:</h6><div id="opens-modal"></div>
+                          <h6 class="modal-time">Earliest Tevila:</h6><div id="tevilah-modal"></div>
+                          <h6 class="modal-time">Last Bath:</h6><div id="bath-modal"></div>
+                          <h6 class="modal-time">Last Shower:</h6><div id="shower-modal"></div>
+                          <h6 class="modal-time">Closes:</h6><div id="closes-modal"></div>
+                      </div>
                     </div>
                 </div>
                 <div class="modal-footer">
@@ -235,7 +208,6 @@
                 
       <div>
       <div>
->>>>>>> c6e1380b2f54fc2b18c3d1edca3590df2dad65ab
     </div>
   </section>
 

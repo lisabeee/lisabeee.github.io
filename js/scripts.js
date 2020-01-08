@@ -223,8 +223,5 @@ request2.onload = function() {
 }
 
 request2.send();
-<<<<<<< HEAD
 
 $('.carousel').carousel('cycle');
-=======
->>>>>>> c6e1380b2f54fc2b18c3d1edca3590df2dad65ab

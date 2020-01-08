@@ -52,6 +52,10 @@
   z-index: 1051 !important;
 }
 
+.jquery-datepicker__panel .jquery-datepicker__day.-is--selected{
+  background-color: rosybrown !important;
+}
+
 html {
   font-family: sans-serif;
   line-height: 1.15;

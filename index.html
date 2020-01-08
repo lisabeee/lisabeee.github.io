@@ -8,14 +8,16 @@
   <meta name="description" content="">
   <meta name="author" content="">
 
-  <title>Creative - Start Bootstrap Theme</title>
+  <title>The Mikvah of New Rochelle</title>
 
   <!-- Font Awesome Icons -->
   <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
 
   <!-- Google Fonts -->
-  <link href="https://fonts.googleapis.com/css?family=Merriweather+Sans:400,700" rel="stylesheet">
-  <link href='https://fonts.googleapis.com/css?family=Merriweather:400,300,300italic,400italic,700,700italic' rel='stylesheet' type='text/css'>
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,700" rel="stylesheet">
+  <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300,300italic,400italic,700,700italic' rel='stylesheet' type='text/css'>
+
+  <link href="https://fonts.googleapis.com/css?family=Montserrat|Open+Sans&display=swap" rel="stylesheet">
 
   <!-- Plugin CSS -->
   <link href="vendor/magnific-popup/magnific-popup.css" rel="stylesheet">
@@ -43,10 +45,10 @@
             <a class="nav-link js-scroll-trigger" href="#services">Hours</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link js-scroll-trigger" href="#portfolio">Photos</a>
+            <a class="nav-link js-scroll-trigger" href="#pictures">Photos</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link js-scroll-trigger" href="#kallah">The Kallah Program</a>
+            <a class="nav-link js-scroll-trigger" href="#brides">Brides</a>
           </li>
           <li class="nav-item">
             <a class="nav-link js-scroll-trigger" href="#fees">Fees</a>
@@ -74,6 +76,16 @@
     </div>
   </header>
 
+</header>
+
+<!-- Page Content -->
+<!-- <section class="py-5">
+  <div class="container">
+    <h1 class="font-weight-light">The Mikvah Of New Rochelle</h1>
+    <p class="lead">Beautifully designed Mikvah facility in the heart of New Rochelle</p>
+  </div>
+</section> -->
+
   <!-- About Section -->
   <section class="page-section bg-primary" id="about">
     <div class="container">
@@ -84,7 +96,7 @@
           <p class="text-white-50 mb-4">The Mikvah of New Rochelle was established on December 7, 2008 to meet the needs of our growing community.
             <br/>
             <br/>
-            In order to enhance the Mikvah experience, our facility offers: 2 Mikvaot, 7 prep rooms, 2 jacuzzi baths, handicapped accessibility, a parking lot, security cameras and a buzzer system at the entrance, radiant floor heating, plush linens and preparation supplies.
+            In order to enhance the Mikvah experience, our facility offers: two Mikvaot, seven prep rooms, including two jacuzzi baths, radiant floor heating, plush linens and preparation supplies, handicapped accessibility, a parking lot, security cameras and a buzzer system at the entrance.
             <br/>
             <br/>
             Throughout the year we operate as a women’s mikvah. Men’s mikvah hours are provided Erev Rosh Hashanah and Erev Yom Kippur. 
@@ -153,108 +165,87 @@
             <br/>
             To schedule a Kallah appointment, please <a href="#contact">call<a/> Mrs. Debbie Wilk at the mikvah.
           </p>
+
+          <!-- Button trigger modal -->
+        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+          View Additional Dates
+        </button>
+
+        <!-- Modal -->
+        <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+          <div class="modal-dialog" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Additional Dates</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body">
+                <!-- Add date picker here -->
+                <div class="input-group date" data-provide="datepicker">
+                <input type="text" class="form-control" id="data-date">
+                <div class="input-group-addon">
+                    <span class="glyphicon glyphicon-th"></span>
+                </div>
+            </div>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+              </div>
+            </div>
+          </div>
+        </div>
       <div/>
       <div/>
     </div>
   </section>
 
   <!-- Portfolio Section -->
-  <section id="portfolio">
-    <div class="container-fluid p-0">
-      <div class="row no-gutters">
-        <div class="col-lg-4 col-sm-6">
-          <a class="portfolio-box" href="img/portfolio/fullsize/1.jpg">
-            <img class="img-fluid" src="img/portfolio/thumbnails/1.jpg" alt="">
-            <div class="portfolio-box-caption">
-              <div class="project-category text-white-50">
-                Mikvah of New Rochelle
-              </div>
-              <div class="project-name">
-                Building Exterior
-              </div>
-            </div>
-          </a>
+  <section id="pictures">
+    <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+      <ol class="carousel-indicators">
+        <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+        <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+        <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+        <li data-target="#carouselExampleIndicators" data-slide-to="3"></li>
+        <li data-target="#carouselExampleIndicators" data-slide-to="4"></li>
+        <li data-target="#carouselExampleIndicators" data-slide-to="5"></li>
+      </ol>
+      <div class="carousel-inner" role="listbox">
+        <div class="carousel-item active" style="background-image: url('img/portfolio/fullsize/5.jpg')">
         </div>
-        <div class="col-lg-4 col-sm-6">
-          <a class="portfolio-box" href="img/portfolio/fullsize/2.jpg">
-            <img class="img-fluid" src="img/portfolio/thumbnails/2.jpg" alt="">
-            <div class="portfolio-box-caption">
-              <div class="project-category text-white-50">
-                Mikvah of New Rochelle
-              </div>
-              <div class="project-name">
-                1 of 2 Mikvaot
-              </div>
-            </div>
-          </a>
+        <div class="carousel-item" style="background-image: url('img/portfolio/fullsize/1.jpg')">
         </div>
-        <div class="col-lg-4 col-sm-6">
-          <a class="portfolio-box" href="img/portfolio/fullsize/3.jpg">
-            <img class="img-fluid" src="img/portfolio/thumbnails/3.jpg" alt="">
-            <div class="portfolio-box-caption">
-              <div class="project-category text-white-50">
-                Mikvah of New Rochelle
-              </div>
-              <div class="project-name">
-                Kallah Prep Room
-              </div>
-            </div>
-          </a>
+        <div class="carousel-item" style="background-image: url('img/portfolio/fullsize/2.jpg')">
         </div>
-        <div class="col-lg-4 col-sm-6">
-          <a class="portfolio-box" href="img/portfolio/fullsize/4.jpg">
-            <img class="img-fluid" src="img/portfolio/thumbnails/4.jpg" alt="">
-            <div class="portfolio-box-caption">
-              <div class="project-category text-white-50">
-                Mikvah of New Rochelle
-              </div>
-              <div class="project-name">
-                Prep Room
-              </div>
-            </div>
-          </a>
+        <div class="carousel-item" style="background-image: url('img/portfolio/fullsize/3.jpg')">
         </div>
-        <div class="col-lg-4 col-sm-6">
-          <a class="portfolio-box" href="img/portfolio/fullsize/5.jpg">
-            <img class="img-fluid" src="img/portfolio/thumbnails/5.jpg" alt="">
-            <div class="portfolio-box-caption">
-              <div class="project-category text-white-50">
-                Mikvah of New Rochelle
-              </div>
-              <div class="project-name">
-                Handicap Accessible Prep Room
-              </div>
-            </div>
-          </a>
+        <div class="carousel-item" style="background-image: url('img/portfolio/fullsize/4.jpg')">
         </div>
-        <div class="col-lg-4 col-sm-6">
-          <a class="portfolio-box" href="img/portfolio/fullsize/6.jpg">
-            <img class="img-fluid" src="img/portfolio/thumbnails/6.jpg" alt="">
-            <div class="portfolio-box-caption p-3">
-              <div class="project-category text-white-50">
-                Mikvah of New Rochelle
-              </div>
-              <div class="project-name">
-                Reception and Waiting Room
-              </div>
-            </div>
-          </a>
+        <div class="carousel-item" style="background-image: url('img/portfolio/fullsize/6.jpg')">
         </div>
       </div>
+      <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="sr-only">Previous</span>
+          </a>
+      <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="sr-only">Next</span>
+          </a>
     </div>
   </section>
 
   <!-- Kallah Program Section -->
-  <section class="page-section bg-primary" id="kallah">
+  <section class="page-section bg-primary" id="brides">
     <div class="container">
       <div class="row justify-content-center">
         <div class="col-lg-8 text-center">
-          <h2 class="text-white mt-0">The Kallah Program</h2>
+          <h2 class="text-white mt-0">Brides</h2>
           <hr class="divider light my-4">
-          <p class="text-white-50 mb-4">The Mikvah of New Rochelle has a special program for all new Kallahs.
-            <br/>
-            <br/>
-            Our brides are put in a special room to prep and given a care package to leave with. 
+          <p class="text-white-50 mb-4">
+            The Mikvah of New Rochelle  invites brides to experience the beautiful mitzvah of tevilah for the first time. Brides prepare in a special room and our mikvah attendant is available to answer any questions or to help. It is our pleasure to give each kallah a gift to welcome her into Jewish marriage.  
             <br/>
             <br/>
             <img class="img-fluid" src="img/portfolio/thumbnails/bride.jpg" alt="">
@@ -280,7 +271,7 @@
           </p>
       <div/>
       <div/>
-      <a class="btn btn-light btn-xl" href="https://docs.google.com/forms/d/e/1FAIpQLSfWR7kB23fVQcduYzR4hS-kyhIhYnDZRpJ_vhz_Zqw5m-EOAQ/viewform">Apply for membership</a>
+      <a class="btn btn-light btn-xl" href="https://docs.google.com/forms/d/e/1FAIpQLSenlu0jMZBn1dcQhZ-UdhqEpFrGMFZFuwNW7FU7ukQSFUZfiQ/viewform">Apply for membership</a>
     </div>
   </section>
 

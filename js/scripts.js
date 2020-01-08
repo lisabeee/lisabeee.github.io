@@ -154,3 +154,5 @@ request2.onload = function() {
 }
 
 request2.send();
+
+$('.carousel').carousel('cycle');

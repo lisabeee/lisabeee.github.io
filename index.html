@@ -188,14 +188,22 @@
                   <!-- Add date picker here -->
                   <div class="jquery-datepicker" data-format="mmddyy" data-start-date=-"-0d" id="dp_button">
                     <label>Select a date:</label>
-                      <input type="text" class="jquery-datepicker__input" id="dp_input">
-                        <div class="custom-date-times">
-                          <h6 class="modal-time">Opens:</h6><div id="opens-modal"></div>
-                          <h6 class="modal-time">Earliest Tevila:</h6><div id="tevilah-modal"></div>
-                          <h6 class="modal-time">Last Bath:</h6><div id="bath-modal"></div>
-                          <h6 class="modal-time">Last Shower:</h6><div id="shower-modal"></div>
-                          <h6 class="modal-time">Closes:</h6><div id="closes-modal"></div>
-                      </div>
+                    <input type="text" class="jquery-datepicker__input" id="dp_input">
+                  </div>
+                    <button type="button" class="btn btn-primary">
+                      Get Hours
+                    </button>
+                    <div class="custom-date-times collapse" id="customDateTimes">
+                        <div id="selected-date-modal">Hours for</div>
+                        <div id="opens-modal">Opens: </div>
+                        <div id="tevilah-modal">Earliest Tevila: </div>
+                        <div id="bath-modal">Last Bath: </div>
+                        <div id="shower-modal">Last Shower: </div>
+                        <div id="closes-modal">Closes: </div>
+                    </div>
+                    <div class="custom-date-times collapse" id="customDateTimes">
+                        <div id="selected-date-modal">Hours for</div>
+                        <div id="appointment-only-modal">Friday and Yom Tov nights are by appointment only. Please call by Thursday evening or in advance of Yom Tov to confirm.</div>
                     </div>
                 </div>
                 <div class="modal-footer">

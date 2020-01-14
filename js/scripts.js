@@ -4,37 +4,29 @@ $('.jquery-datepicker').datepicker();
 
 var today = new Date();
 var todaySplit = today.toString().split(" ", 4);
-calculateTimes(today.getMonth(), todaySplit[2], todaySplit[3], 0);
+calculateTimes(today.getMonth(), todaySplit[2], todaySplit[3], false);
 
 
 $($("#modal-placeholder").on("click", "#btn-primary", function() {
-    console.log("hi");
-    console.log(document.getElementById("dp_input").value);
     var date = document.getElementById("dp_input").value;
     var splitDate = date.toString().split("/");
     var month = splitDate[0];
     var day = splitDate[1];
     var year = splitDate[2];
 
-    calculateTimes(month, day, year, 1);
+    calculateTimes(month, day, year, true);
 }));
 
-function calculateTimes(month, day, year, num) {
-    console.log(month);
-    console.log(day);
-    console.log(year);
-    console.log(num);
-
-    if (num == 1) { // so starts at 0 like javascript 
+function calculateTimes(month, day, year, dateFromDatePicker) {
+    if (dateFromDatePicker) { // so starts at 0 like javascript 
         month--;
     }
 
     var t = new Date(year, month, day);
-    console.log(t);
 
     const months = ["January", "February", "March", "April", "May",
     "June", "July", "August", "September", "October", "November", "December"];
-    if (num == 0) {
+    if (!dateFromDatePicker) {
         document.getElementById("service").innerHTML = "Hours of Service for " + months[month] + " " + day + ", " + year; 
     }
     else {
@@ -73,7 +65,6 @@ function calculateTimes(month, day, year, num) {
                 const y = (tomYear < 10 ? "0" : "") + tomYear.toString();
 
                 if (data.items[i].date == `${y}-${m}-${d}`) {
-                    console.log("match");
                     holidayTom = true;
                     i = data.items.length;
                 }
@@ -87,10 +78,6 @@ function calculateTimes(month, day, year, num) {
     if (t.getDay() == 6) { // check fridays candlelighting because API has different response on sat
         dayToday.setDate(t.getDate() - 1);
     }
-
-    console.log(dayToday);
-    console.log(dayToday.getDate());
-    console.log(t);
 
     request2.open('GET', `https://www.hebcal.com/shabbat/?cfg=json&zip=10804&gy=${t.getFullYear()}&gm=${t.getMonth()+1}&gd=${dayToday.getDate()}`, false); 
 
@@ -144,15 +131,10 @@ function calculateTimes(month, day, year, num) {
             var minutes = lighting[1];
             if (day != 6 && !lastDayOfChag) { // not a saturday or last day of chag so tevila is 50 min after sunset
                 var sunset = SunCalc.getTimes(t, 40.941430, -73.793830).sunset;
-                console.log(sunset);
                 var splitSunset = sunset.toString().split(" ");
-                console.log(splitSunset);
                 var timeInString = splitSunset[4].split(":", 2);
-                console.log(timeInString);
                 var hr = Number(timeInString[0]);
                 var min = Number(timeInString[1]);
-                console.log(hr);
-                console.log(min);
 
                 tevilaHour = hr;
                 tevilaMinutes = min + 50;
@@ -221,7 +203,7 @@ function calculateTimes(month, day, year, num) {
             var tevilaText = "-";
         }
 
-        if (num == 0) {
+        if (!dateFromDatePicker) {
             document.getElementById("open").innerHTML = openText;
             document.getElementById("tevila").innerHTML = tevilaText;
         }
@@ -251,7 +233,7 @@ function calculateTimes(month, day, year, num) {
             season = 0; // winter
         }
 
-        if (num == 0) {
+        if (!dateFromDatePicker) {
             if (season && day != 5 && !holiday) {
                 document.getElementById("closes").innerHTML = "11:00 PM";
                 document.getElementById("last bath").innerHTML = "10:00 PM";

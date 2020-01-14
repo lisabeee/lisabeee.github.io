@@ -60,7 +60,7 @@ function calculateTimes(month, day, year, num) {
     var holidayTom = false; // assume false
 
     // find out information about tomorrow
-    request1.open('GET', `https://www.hebcal.com/shabbat/?cfg=json&zip=10804&gy=${tomYear}&gm=${tomMonth}&gd=${tomDay}`, true);
+    request1.open('GET', `https://www.hebcal.com/shabbat/?cfg=json&zip=10804&gy=${tomYear}&gm=${tomMonth}&gd=${tomDay}`, false);
 
     request1.onload = function() {
         var data = JSON.parse(this.response);
@@ -68,8 +68,15 @@ function calculateTimes(month, day, year, num) {
         // find if tom is a holiday
         for (var i = 0; i < data.items.length; i++) {
             if (data.items[i].yomtov == true) {
-                holidayTom = true;
-                i = data.items.length;
+                const d = (tomDay < 10 ? "0" : "") + tomDay.toString();
+                const m = (tomMonth < 10 ? "0" : "") + tomMonth.toString();
+                const y = (tomYear < 10 ? "0" : "") + tomYear.toString();
+
+                if (data.items[i].date == `${y}-${m}-${d}`) {
+                    console.log("match");
+                    holidayTom = true;
+                    i = data.items.length;
+                }
             }
         }
     }
@@ -85,7 +92,7 @@ function calculateTimes(month, day, year, num) {
     console.log(dayToday.getDate());
     console.log(t);
 
-    request2.open('GET', `https://www.hebcal.com/shabbat/?cfg=json&zip=10804&gy=${t.getFullYear()}&gm=${t.getMonth()+1}&gd=${dayToday.getDate()}`, true); 
+    request2.open('GET', `https://www.hebcal.com/shabbat/?cfg=json&zip=10804&gy=${t.getFullYear()}&gm=${t.getMonth()+1}&gd=${dayToday.getDate()}`, false); 
 
     request2.onload = function() {
 
@@ -215,7 +222,6 @@ function calculateTimes(month, day, year, num) {
         }
 
         if (num == 0) {
-            console.log(openText);
             document.getElementById("open").innerHTML = openText;
             document.getElementById("tevila").innerHTML = tevilaText;
         }
@@ -227,10 +233,9 @@ function calculateTimes(month, day, year, num) {
             }
             else {
                 $('#customDateApptOnly').collapse("hide");
-                $('#customDateTimes').collapse("show");
                 document.getElementById("opens-modal").innerHTML = "Opens: " + openText;
                 document.getElementById("tevilah-modal").innerHTML = "Earliest Tevila: " + tevilaText;
-
+                $('#customDateTimes').collapse("show");
             }
         }
 

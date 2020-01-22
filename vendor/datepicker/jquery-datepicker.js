@@ -46,7 +46,7 @@
             en: {
                 months : ['January', 'February', 'March', 'April', 'May', 'June',
                     'July', 'August', 'September', 'October', 'November', 'December'],
-                days: ['MO', 'TU', 'WE', 'TH', 'FR', 'SA', 'SU']
+                days: ['SU', 'MO', 'TU', 'WE', 'TH', 'FR', 'SA']
             }
         },
         
@@ -156,9 +156,9 @@
             });
 
             /* create elements for days of current month */
-            if ((firstDay = new Date(year, month, 1).getDay()) === 0) {
-                firstDay = 7;
-            }
+            firstDay = new Date(year, month, 1).getDay();
+            firstDay++;
+
             for (i = 0; i < firstDay - 1; i++) {
                 /* place empty cells before the first day */
                 dayItems.push($('<td>').addClass('-is--disabled').append('<span>'));

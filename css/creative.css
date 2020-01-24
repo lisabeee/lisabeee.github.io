@@ -81,6 +81,33 @@ article, aside, figcaption, figure, footer, header, hgroup, main, nav, section {
   background-size: cover;
 }
 
+@media(max-width: 768px){
+   .carousel-item {
+      height: 360px;
+  }
+}
+
+@media(max-width: 425px){
+   .carousel-item {
+      height: 220px;
+      min-height: unset;
+  }
+}
+
+@media(max-width: 375px){
+   .carousel-item {
+      height: 200px;
+      min-height: unset;
+  }
+}
+
+@media(max-width: 320px){
+   .carousel-item {
+      height: 180px;
+      min-height: unset;
+  }
+}
+
 body {
   margin: 0;
   font-family: "Montserrat", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
@@ -10651,6 +10678,13 @@ hr.dark{
   color: rosybrown !important;
 }
 
+@media(max-width: 370px){
+   #mainNav .navbar-brand {
+    letter-spacing: -2px;
+  }
+
+}
+
 @media (min-width: 992px) {
   #mainNav {
     -webkit-box-shadow: none;
@@ -10730,6 +10764,10 @@ header.masthead h1 {
 
 #brides .img-fluid {
   border-style: ridge;
+}
+
+#about a{
+  color: #6c757d;
 }
 
 #portfolio .container-fluid {

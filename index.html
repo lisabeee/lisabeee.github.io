@@ -176,14 +176,16 @@
                   </button>
                 </div>
                 <div class="modal-body" id="modal-placeholder">
-                  <!-- Add date picker here -->
-                  <div class="jquery-datepicker" data-format="mmddyyyy" data-start-date=-"-0d" id="dp_button">
-                    <label>Select a date:</label>
-                    <input type="text" class="jquery-datepicker__input" id="dp_input">
+                  <div class="input-group justify-content-center">
+                    <div class="jquery-datepicker" data-format="mmddyyyy" data-start-date=-"-0d" id="dp_button">
+                      <input type="text" class="jquery-datepicker__input form-control" id="dp_input">
+                    </div>
+                    <div class="input-group-append">
+                      <button type="button" class="btn btn-primary" id="btn-primary">
+                        Get Hours
+                      </button>
+                    </div>
                   </div>
-                    <button type="button" class="btn btn-primary" id="btn-primary">
-                      Get Hours
-                    </button>
                     <div class="custom-date-times collapse" id="customDateTimes">
                         <h5 id="selected-date-modal"></h5>
                         <div id="opens-modal">Opens: </div>

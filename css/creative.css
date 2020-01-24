@@ -72,40 +72,11 @@ article, aside, figcaption, figure, footer, header, hgroup, main, nav, section {
 }
 
 .carousel-item {
-  height: 85vh;
-  min-height: 350px;
   background: no-repeat center center scroll;
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
   background-size: cover;
-}
-
-@media(max-width: 768px){
-   .carousel-item {
-      height: 360px;
-  }
-}
-
-@media(max-width: 425px){
-   .carousel-item {
-      height: 220px;
-      min-height: unset;
-  }
-}
-
-@media(max-width: 375px){
-   .carousel-item {
-      height: 200px;
-      min-height: unset;
-  }
-}
-
-@media(max-width: 320px){
-   .carousel-item {
-      height: 180px;
-      min-height: unset;
-  }
 }
 
 body {
@@ -10678,7 +10649,7 @@ hr.dark{
   color: rosybrown !important;
 }
 
-@media(max-width: 370px){
+@media(max-width: 375px){
    #mainNav .navbar-brand {
     letter-spacing: -2px;
   }

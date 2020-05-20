@@ -1,12 +1,20 @@
-// display hours of service for specific date
+// want to display hours of service for specific date
+// first need to call either today or selected date
 
 $('.jquery-datepicker').datepicker();
 
+// when getting times for today
+// get date and split it into month, day and year
+// last parameter is false because using today's date, not picked from calendar
+// call calculateTimes for calculations
 var today = new Date();
 var todaySplit = today.toString().split(" ", 4);
 calculateTimes(today.getMonth(), todaySplit[2], todaySplit[3], false);
 
-
+// when getting times for a specific date from the calendar
+// get the date from the html and split into month, day and year
+// last parameter is true because using selected date
+// call calculateTimes for calculations 
 $($("#modal-placeholder").on("click", "#btn-primary", function() {
     var date = document.getElementById("dp_input").value;
     var splitDate = date.toString().split("/");
@@ -17,16 +25,22 @@ $($("#modal-placeholder").on("click", "#btn-primary", function() {
     calculateTimes(month, day, year, true);
 }));
 
+// main method to calculate times for specific day
+// calls helper methods for each time needed
 function calculateTimes(month, day, year, dateFromDatePicker) {
-    if (dateFromDatePicker) { // so starts at 0 like javascript 
+
+    // months will start at 1 if its from datepicker 
+    // but javascript starts at 0 so subtract 1 from month number
+    if (dateFromDatePicker) { 
         month--;
     }
 
     var t = new Date(year, month, day);
 
+    // display date in text form 
     const months = ["January", "February", "March", "April", "May",
     "June", "July", "August", "September", "October", "November", "December"];
-    if (!dateFromDatePicker) {
+    if (!dateFromDatePicker) { // using today's date don't have calendar popup open
         document.getElementById("service").innerHTML = "Hours of Service for " + months[month] + " " + day + ", " + year; 
     }
     else {

@@ -126,7 +126,20 @@ function calculateTimes(month, day, year, dateFromDatePicker) {
         for (var i = 0; i < data.items.length; i++) {
             if (data.items[i].yomtov == true) {
                 if (holidayTom == false) {
-                    lastDayOfChag = true;
+                    var today = new Date(t);
+                    dayToday=today.toString().split(" ", 4);
+
+                    var todayDay = parseInt(dayToday[2]);
+                    var todayYear = today.getFullYear();
+                    var todayMonth = today.getMonth() + 1;
+                    const d = (todayDay < 10 ? "0" : "") + todayDay.toString();
+                    const m = (todayMonth < 10 ? "0" : "") + todayMonth.toString();
+                    const y = (todayYear < 10 ? "0" : "") + todayYear.toString();
+
+                    if (data.items[i].date == `${y}-${m}-${d}`) {
+                        lastDayOfChag = true;
+                        i = data.items.length;
+                    }
                 }
             }
         }
@@ -285,5 +298,3 @@ function calculateTimes(month, day, year, dateFromDatePicker) {
     }
     request2.send();
 }
-
-$('.carousel').carousel('cycle');

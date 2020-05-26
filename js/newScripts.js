@@ -72,8 +72,9 @@ function calculateTimes(month, day, year, dateFromDatePicker) {
     var holiday = holidayTom; // erev chag or a holiday if tomorrow is a holiday
     var lastDayOfChag = false;
 
-    // make API call with dayToday date so can account for saturday needing to call on friday's info
-    request.open('GET', `https://www.hebcal.com/shabbat/?cfg=json&zip=10804&gy=${today.getFullYear()}&gm=${today.getMonth()+1}&gd=${dayToday.getDate()}`, false); 
+    // make API call with dayToday so can account for saturday needing to call on friday's info
+    // use all of dayToday info on chance that saturday was first day of the month
+    request.open('GET', `https://www.hebcal.com/shabbat/?cfg=json&zip=10804&gy=${dayToday.getFullYear()}&gm=${dayToday.getMonth()+1}&gd=${dayToday.getDate()}`, false); 
 
     request.onload = function() {
 
@@ -279,7 +280,7 @@ function calculateTevilaAndOpening(date, candleLightingArray, holiday, lastDayOf
         document.getElementById("open").innerHTML = openText;
     }   
     else { // pop-up with calendar
-        if (today.getDay() == 5 || holiday) { // display appt only text
+        if (date.getDay() == 5 || holiday) { // display appt only text
             $('#customDateTimes').collapse("hide");
             $('#customDateApptOnly').collapse("show");
         }

@@ -65,6 +65,8 @@ function calculateTimes(month, day, year, dateFromDatePicker) {
         dayToday.setDate(today.getDate() - 1);
     }
 
+    console.log("date: " + dayToday);
+
     // three variables we need for helper methods
     // candleLighting defined in API call
     // lastDayOfChag may be changed in API call 
@@ -194,6 +196,8 @@ function calculateTevilaAndOpening(date, candleLightingArray, holiday, lastDayOf
             var sunsetHour = Number(timeInString[0]);
             var sunsetMin = Number(timeInString[1]);
 
+            console.log("Sunset " + timeInString);
+
             // tevila = sunset + 50 min
             tevilaHour = sunsetHour;
             tevilaMinutes = sunsetMin + 50;
@@ -231,9 +235,17 @@ function calculateTevilaAndOpening(date, candleLightingArray, holiday, lastDayOf
         }
         else { // sat or last day of chag
 
+            console.log("post shab or chag");
+
+            if(lastDayOfChag) {
+                candleLightingArray = lastDayOfChagTime(date);
+            }
+
             // open based on candle lighting and tevila based on opening
             var candleLightingHour = parseInt(candleLightingArray[0],10);
             var candleLightingMin = parseInt(candleLightingArray[1],10);
+
+            console.log("candle lighting: " + candleLightingArray);
 
             // open = at least 1 1/2 hour after CL, rounded to nearest 15 
             if (candleLightingMin >= 1 && candleLightingMin <= 15) {
@@ -347,4 +359,46 @@ function calculateClosing(tevilaHour, tevilaMinutes, date, holiday, dateFromDate
             $('#customDateTimes').collapse("show");
         }
     }
+}
+
+// called if last day of chag to get candle lighting for erev chag
+// takes current date and subtracts 2 because always a 2 day chag
+// returns array with candle lighting to be used in calculation
+function lastDayOfChagTime(date) {
+
+    var lastDay = new Date(date);
+    lastDay.setDate(date.getDate() - 2);
+    console.log("date of erev chag: " + lastDay);
+
+    const request = new XMLHttpRequest();
+
+    // make API call 
+    request.open('GET', `https://www.hebcal.com/shabbat/?cfg=json&zip=10804&gy=${lastDay.getFullYear()}&gm=${lastDay.getMonth()+1}&gd=${lastDay.getDate()}`, false);
+
+    request.onload = function() {
+        
+        var data = JSON.parse(this.response);
+
+        // start at -1 so we have a way of identifying when no index was found
+        var lightingIndex = -1;
+
+        // find element in the array of the response with lighting time for the week
+        // get index of element 
+        for (var i = 0; i < data.items.length; i++) { 
+            if (data.items[i].category == "candles") {
+                lightingIndex = i;
+                i = data.items.length; // so stops looping when we find it
+            }
+        }
+
+        // get info about lighting time
+        var time = data.items[lightingIndex].date; 
+        var splitting = time.split('T');
+        candleLighting = (splitting[1].split('-'))[0].split(':'); 
+        console.log("candle lighting for erev chag: " + candleLighting);
+    }
+
+    request.send();
+
+    return candleLighting;
 }

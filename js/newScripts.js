@@ -70,9 +70,10 @@ function calculateTimes(month, day, year, dateFromDatePicker) {
     // three variables we need for helper methods
     // candleLighting defined in API call
     // lastDayOfChag may be changed in API call 
-    var candleLighting;
+    var candleLighting = null; 
     var holiday = holidayTom; // erev chag or a holiday if tomorrow is a holiday
     var lastDayOfChag = false;
+    var erevTB = false; // erev tisha bav
 
     // make API call with dayToday so can account for saturday needing to call on friday's info
     // use all of dayToday info on chance that saturday was first day of the month
@@ -83,51 +84,77 @@ function calculateTimes(month, day, year, dateFromDatePicker) {
         // for opening hours and earliest tevilla
         var data = JSON.parse(this.response);
 
-        // start at -1 so we have a way of identifying when no index was found
-        var lightingIndex = -1;
+        // parsing of date to use for checking TB and last day of chag
+        dayToday=today.toString().split(" ", 4);
+        var todayDay = parseInt(dayToday[2]);
+        var todayYear = today.getFullYear();
+        var todayMonth = today.getMonth() + 1;
 
-        // find element in the array of the response with lighting time for the week
-        // get index of element 
-        for (var i = 0; i < data.items.length; i++) { 
-            if (data.items[i].category == "candles") {
-                lightingIndex = i;
-                i = data.items.length; // so stops looping when we find it
-            }
-        }
-
-        // check if today is a yomtov and that tomorrow isn't a holiday, meaning it is last day of chag
-        // sometimes yomtov will come up if it is during that week so check that it is actually today
+        // edge case - check if it is erev tisha bav
+        // if so, display appt only statement
         for (var i = 0; i < data.items.length; i++) {
-            if (data.items[i].yomtov == true) {
-                if (holidayTom == false) {
-                    dayToday=today.toString().split(" ", 4);
-
-                    var todayDay = parseInt(dayToday[2]);
-                    var todayYear = today.getFullYear();
-                    var todayMonth = today.getMonth() + 1;
-                    const d = (todayDay < 10 ? "0" : "") + todayDay.toString();
-                    const m = (todayMonth < 10 ? "0" : "") + todayMonth.toString();
-                    const y = (todayYear < 10 ? "0" : "") + todayYear.toString();
-
-                    if (data.items[i].date == `${y}-${m}-${d}`) {
-                        lastDayOfChag = true;
-                        i = data.items.length;
-                    }
+            if (data.items[i].title == "Erev Tish'a B'Av") {
+                const d = (todayDay < 10 ? "0" : "") + todayDay.toString();
+                const m = (todayMonth < 10 ? "0" : "") + todayMonth.toString();
+                const y = (todayYear < 10 ? "0" : "") + todayYear.toString();
+                
+                // check that date matches
+                if (data.items[i].date == `${y}-${m}-${d}`) {
+                    erevTB = true;
+                    i = data.items.length;
                 }
             }
         }
 
-        // get info about lighting times to use for other helper methods
-        var time = data.items[lightingIndex].date; 
-        var splitting = time.split('T');
-        candleLighting = (splitting[1].split('-'))[0].split(':'); 
+        // check for time and last day of chag if not erev TB
+        // if erev TB, already know we just want appt message to appear so don't need to do more work
+        if (!erevTB) {
+            // start at -1 so we have a way of identifying when no index was found
+            var lightingIndex = -1;
+
+            // find element in the array of the response with lighting time for the week
+            // get index of element 
+            for (var i = 0; i < data.items.length; i++) { 
+                if (data.items[i].category == "candles") {
+                    lightingIndex = i;
+                    i = data.items.length; // so stops looping when we find it
+                }
+            }
+
+            // check if today is a yomtov and that tomorrow isn't a holiday, meaning it is last day of chag
+            // sometimes yomtov will come up if it is during that week so check that it is actually today
+            for (var i = 0; i < data.items.length; i++) {
+                if (data.items[i].yomtov == true) {
+                    if (holidayTom == false) {
+                        dayToday=today.toString().split(" ", 4);
+
+                        var todayDay = parseInt(dayToday[2]);
+                        var todayYear = today.getFullYear();
+                        var todayMonth = today.getMonth() + 1;
+                        const d = (todayDay < 10 ? "0" : "") + todayDay.toString();
+                        const m = (todayMonth < 10 ? "0" : "") + todayMonth.toString();
+                        const y = (todayYear < 10 ? "0" : "") + todayYear.toString();
+
+                        if (data.items[i].date == `${y}-${m}-${d}`) {
+                            lastDayOfChag = true;
+                            i = data.items.length;
+                        }
+                    }
+                }
+            }
+
+            // get info about lighting times to use for other helper methods
+            var time = data.items[lightingIndex].date; 
+            var splitting = time.split('T');
+            candleLighting = (splitting[1].split('-'))[0].split(':'); 
+        }
     }
 
     request.send();
 
     // call to calculate the tevila and opening time
     // pass today's date, array with candlelighting time, and three booleans
-    calculateTevilaAndOpening(today, candleLighting, holiday, lastDayOfChag, dateFromDatePicker);
+    calculateTevilaAndOpening(today, candleLighting, holiday, lastDayOfChag, dateFromDatePicker, erevTB);
 }
 
 // calls API to find out if tomorrow is a holiday
@@ -178,14 +205,14 @@ function infoAboutTom(tomDate) {
 // post shab/chag: opens at least an hour and a half after lighting rounded to nearest 15
 // and tevila is exactly when it opens
 // friday/chag: appt only
-function calculateTevilaAndOpening(date, candleLightingArray, holiday, lastDayOfChag, dateFromDatePicker) {
+function calculateTevilaAndOpening(date, candleLightingArray, holiday, lastDayOfChag, dateFromDatePicker, erevTB) {
     var tevilaHour, tevilaMinutes, openHour, openMinutes;
     var tevilaText, openText;
 
     // add time to date for sunset calculation purposes
     date = new Date(date.getFullYear(), date.getMonth(), date.getDate(), 12, 0, 0, 0, 0);
 
-    if (date.getDay() != 5 && !holiday) { // not friday or a holiday
+    if (date.getDay() != 5 && !holiday && !erevTB) { // not friday or a holiday or erevTB
         if (date.getDay() != 6 && !lastDayOfChag) { // not sat or last day of chag
 
             // regular day rules
@@ -281,7 +308,7 @@ function calculateTevilaAndOpening(date, candleLightingArray, holiday, lastDayOf
         tevilaText = tevilaHour.toString() + ":" + (tevilaMinutes < 10 ? "0" : "") + tevilaMinutes.toString() + " PM";
     }
 
-    else { // it is friday or a holiday so appt only
+    else { // it is friday or a holiday or erev TB so appt only
         openText = "-";
         tevilaText = "-";
     }
@@ -292,7 +319,7 @@ function calculateTevilaAndOpening(date, candleLightingArray, holiday, lastDayOf
         document.getElementById("open").innerHTML = openText;
     }   
     else { // pop-up with calendar
-        if (date.getDay() == 5 || holiday) { // display appt only text
+        if (date.getDay() == 5 || holiday || erevTB) { // display appt only text
             $('#customDateTimes').collapse("hide");
             $('#customDateApptOnly').collapse("show");
         }
@@ -305,19 +332,19 @@ function calculateTevilaAndOpening(date, candleLightingArray, holiday, lastDayOf
     }
     
     // calculate closing based on tevila so call calculation function here
-    calculateClosing(tevilaHour, tevilaMinutes, date, holiday, dateFromDatePicker);
+    calculateClosing(tevilaHour, tevilaMinutes, date, holiday, dateFromDatePicker, erevTB);
 }
 
 // closing time based on tevila time
 // approx. 2 hours after earliest tevila - either 10, 10:30 or 11
 // last bath is 1 hr before closing, last shower is 30 min before closing
-function calculateClosing(tevilaHour, tevilaMinutes, date, holiday, dateFromDatePicker) {
+function calculateClosing(tevilaHour, tevilaMinutes, date, holiday, dateFromDatePicker, erevTB) {
 
     var closingText;
     var lastBath;
     var lastShower;
 
-    if (date.getDay() == 5 || holiday) { // friday or holiday so appt only
+    if (date.getDay() == 5 || holiday || erevTB) { // friday or holiday or erev TB so appt only
         closingText = "-";
         lastBath = "-";
         lastShower = "-";
@@ -347,7 +374,7 @@ function calculateClosing(tevilaHour, tevilaMinutes, date, holiday, dateFromDate
         document.getElementById("last shower").innerHTML = lastShower;
     }
     else { // pop-up with calendar
-        if (date.getDay() == 5 || holiday) {
+        if (date.getDay() == 5 || holiday || erevTB) {
             $('#customDateTimes').collapse("hide");
             $('#customDateApptOnly').collapse("show");
         }

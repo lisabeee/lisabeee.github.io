@@ -394,7 +394,13 @@ function calculateClosing(tevilaHour, tevilaMinutes, date, holiday, dateFromDate
 function lastDayOfChagTime(date) {
 
     var lastDay = new Date(date);
-    lastDay.setDate(date.getDate() - 2);
+    if (lastDay.getDay() == 1) { // last day is monday so started on sat night but want friday candle lighting 
+        console.log("monday");
+        lastDay.setDate(date.getDate() - 3);
+    }
+    else { // regular two day chag so want first night lighting
+        lastDay.setDate(date.getDate() - 2);
+    }
     console.log("date of erev chag: " + lastDay);
 
     const request = new XMLHttpRequest();

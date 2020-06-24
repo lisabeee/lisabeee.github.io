@@ -111,6 +111,11 @@ p {
   margin-bottom: 1rem;
 }
 
+ul {
+  display: inline-block;
+  text-align:left;
+}
+
 abbr[title],
 abbr[data-original-title] {
   text-decoration: underline;

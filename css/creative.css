@@ -5553,7 +5553,6 @@ a.badge-dark:focus, a.badge-dark.focus {
 }
 
 .alert-warning {
-  color: #856404;
   background-color: #fff3cd;
   border-color: #ffeeba;
 }
@@ -7004,7 +7003,7 @@ button.bg-light:focus {
 }
 
 .bg-dark {
-  background-color: silver !important;
+  background-color: #B0B0B0 !important;
 }
 
 a.bg-dark:hover, a.bg-dark:focus,

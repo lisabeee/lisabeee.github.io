@@ -65,8 +65,6 @@ function calculateTimes(month, day, year, dateFromDatePicker) {
         dayToday.setDate(today.getDate() - 1);
     }
 
-    console.log("date: " + dayToday);
-
     // three variables we need for helper methods
     // candleLighting defined in API call
     // lastDayOfChag may be changed in API call 

@@ -221,8 +221,6 @@ function calculateTevilaAndOpening(date, candleLightingArray, holiday, lastDayOf
             var sunsetHour = Number(timeInString[0]);
             var sunsetMin = Number(timeInString[1]);
 
-            console.log("Sunset " + timeInString);
-
             // tevila = sunset + 50 min
             tevilaHour = sunsetHour;
             tevilaMinutes = sunsetMin + 50;
@@ -235,32 +233,58 @@ function calculateTevilaAndOpening(date, candleLightingArray, holiday, lastDayOf
                 tevilaHour -= 12;
             }
 
-            // open = at least 30 min before tevila, rounded to nearest 15 
-            if (tevilaMinutes >= 0 && tevilaMinutes <= 14) {
-                openHour = tevilaHour - 1;
-                openMinutes = 30;
-            }
-            else if (tevilaMinutes >= 15 && tevilaMinutes <= 29) {
-                openHour = tevilaHour - 1;
-                openMinutes = 45;
-            }
-            else if (tevilaMinutes >= 30 && tevilaMinutes <= 44) {
+            // opening varies by season
+            if (tevilaHour < 6) { //winter opening times, open at time of tevila
                 openHour = tevilaHour;
-                openMinutes = 0
+                openMinutes = tevilaMinutes;
             }
-            else {
-                openHour = tevilaHour;
-                openMinutes = 15;
-            }
+            else if (tevilaHour == 6) { //when tevila is between 6-7, open 15 minutes before tevila rounded to nearest 15 (max 29)
+                if (tevilaMinutes >= 0 && tevilaMinutes <= 14) {
+                    openHour = tevilaHour - 1;
+                    openMinutes = 45;
+                }
+                else if (tevilaMinutes >= 15 && tevilaMinutes <= 29) {
+                    openHour = tevilaHour;
+                    openMinutes = 0;
+                }
+                else if (tevilaMinutes >= 30 && tevilaMinutes <= 44) {
+                    openHour = tevilaHour;
+                    openMinutes = 15
+                }
+                else {
+                    openHour = tevilaHour;
+                    openMinutes = 30;
+                }
 
-            if (openHour > 12) {
-                openHour = openHour - 12;
+                if (openHour > 12) {
+                    openHour = openHour - 12;
+                }
+            }
+            else { //when tevila is after 7,open 30 minutes before tevila rounded to nearest 15 (max 44)
+                if (tevilaMinutes >= 0 && tevilaMinutes <= 14) {
+                    openHour = tevilaHour - 1;
+                    openMinutes = 30;
+                }
+                else if (tevilaMinutes >= 15 && tevilaMinutes <= 29) {
+                    openHour = tevilaHour - 1;
+                    openMinutes = 45;
+                }
+                else if (tevilaMinutes >= 30 && tevilaMinutes <= 44) {
+                    openHour = tevilaHour;
+                    openMinutes = 0
+                }
+                else {
+                    openHour = tevilaHour;
+                    openMinutes = 15;
+                }
+
+                if (openHour > 12) {
+                    openHour = openHour - 12;
+                }
             }
 
         }
         else { // sat or last day of chag
-
-            console.log("post shab or chag");
 
             if(lastDayOfChag) {
                 candleLightingArray = lastDayOfChagTime(date);
@@ -269,8 +293,6 @@ function calculateTevilaAndOpening(date, candleLightingArray, holiday, lastDayOf
             // open based on candle lighting and tevila based on opening
             var candleLightingHour = parseInt(candleLightingArray[0],10);
             var candleLightingMin = parseInt(candleLightingArray[1],10);
-
-            console.log("candle lighting: " + candleLightingArray);
 
             // open = at least 1 1/2 hour after CL, rounded to nearest 15 
             if (candleLightingMin >= 1 && candleLightingMin <= 15) {
@@ -393,13 +415,11 @@ function lastDayOfChagTime(date) {
 
     var lastDay = new Date(date);
     if (lastDay.getDay() == 1) { // last day is monday so started on sat night but want friday candle lighting 
-        console.log("monday");
         lastDay.setDate(date.getDate() - 3);
     }
     else { // regular two day chag so want first night lighting
         lastDay.setDate(date.getDate() - 2);
     }
-    console.log("date of erev chag: " + lastDay);
 
     const request = new XMLHttpRequest();
 
@@ -426,7 +446,6 @@ function lastDayOfChagTime(date) {
         var time = data.items[lightingIndex].date; 
         var splitting = time.split('T');
         candleLighting = (splitting[1].split('-'))[0].split(':'); 
-        console.log("candle lighting for erev chag: " + candleLighting);
     }
 
     request.send();
